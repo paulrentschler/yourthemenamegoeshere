@@ -11,9 +11,9 @@
   <!-- Profiles -->
   <genericsetup:registerProfile
       name="default"
-      title="GatherIt Theme"
+      title="Your Theme Name Goes Here"
       directory="profiles/default"
-      description="Installs the 'GatherIt' Plone theme."
+      description="Installs the 'Your Theme Name Goes Here' Plone theme."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
