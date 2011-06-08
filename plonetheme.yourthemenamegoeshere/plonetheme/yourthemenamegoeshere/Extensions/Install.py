@@ -6,10 +6,8 @@ def uninstall(portal):
     skins_tool = getToolByName(portal, 'portal_skins')
 
     # Try to clean up
-    try:
+    if THEMENAME in skins_tool['selections']:
         del skins_tool['selections'][THEMENAME]
-    except:
-        pass
 
     # Set a reasonable default skin
     if skins_tool.getDefaultSkin() == THEMENAME:
