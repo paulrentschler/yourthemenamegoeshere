@@ -1,23 +1,20 @@
 #!/bin/sh
-SHORTNAME=awesome
-FULLNAME="Awesome Theme"
-find -X plonetheme.yourthemenamegoeshere | xargs -I {} \
-sed -i '' 's:yourthemenamegoeshere:'$SHORTNAME':g;s:Your Theme Name Goes Here:'$FULLNAME':g' {}
-mv plonetheme.yourthemenamegoeshere/plonetheme/yourthemenamegoeshere/stylesheets/yourthemenamegoeshere.css plonetheme.$SHORTNAME/plonetheme/$SHORTNAME/stylesheets/$SHORTNAME.css
-mv plonetheme.yourthemenamegoeshere/plonetheme/yourthemenamegoeshere plonetheme.$SHORTNAME/plonetheme/$SHORTNAME
+if [ ! $# -eq 2 ]
+then
+    echo "Modern Plone Theme Generator"
+    echo "Usage: $0 [short theme name] [full theme name]"
+    echo "Example: $0 myawesometheme \"My Awesome Theme\""
+    exit 1
+fi
+SHORTNAME=$1
+FULLNAME=$2
+
+# insert the theme name where needed
+SEDEXPRESSION='s/yourthemenamegoeshere/'$SHORTNAME'/g;s/Your Theme Name Goes Here/'$FULLNAME'/g'
+find -X plonetheme.yourthemenamegoeshere -type f | xargs -I {} sed -i '' -e "$SEDEXPRESSION" {} 
+
+# rename the file and folder objects
+mv plonetheme.yourthemenamegoeshere/plonetheme/yourthemenamegoeshere/stylesheets/yourthemenamegoeshere.css plonetheme.yourthemenamegoeshere/plonetheme/yourthemenamegoeshere/stylesheets/$SHORTNAME.css
+mv plonetheme.yourthemenamegoeshere/plonetheme/yourthemenamegoeshere plonetheme.yourthemenamegoeshere/plonetheme/$SHORTNAME 
 mv plonetheme.yourthemenamegoeshere plonetheme.$SHORTNAME
 
-
-
-#Replace:
-#
-#Your Theme Name Goes Here
-#yourthemenamegoeshere
-#
-#Rename:
-#
-#plonetheme.yournamegoeshere/plonetheme/yournamegoeshere/stylesheets/yournamegoeshere.css
-#plonetheme.yournamegoeshere/plonetheme/yournamegoeshere
-#plonetheme.yournamegoeshere
-
-#http://stackoverflow.com/questions/845863/how-to-use-in-an-xargs-command 
