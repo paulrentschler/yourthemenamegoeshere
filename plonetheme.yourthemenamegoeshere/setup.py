@@ -25,7 +25,9 @@ setup(name='plonetheme.yourthemenamegoeshere',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'z3c.jbot'
+          'z3c.jbot>=0.6.0',
+          'plonetheme.sunburst',
+          'Plone>=4.0',
       ],
       entry_points="""
       # -*- Entry points: -*-
