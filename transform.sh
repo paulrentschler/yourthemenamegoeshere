@@ -18,3 +18,7 @@ mv plonetheme.yourthemenamegoeshere/plonetheme/yourthemenamegoeshere/stylesheets
 mv plonetheme.yourthemenamegoeshere/plonetheme/yourthemenamegoeshere plonetheme.yourthemenamegoeshere/plonetheme/$SHORTNAME 
 mv plonetheme.yourthemenamegoeshere plonetheme.$SHORTNAME
 
+# add empty folders
+mkdir plonetheme.$SHORTNAME/plonetheme/$SHORTNAME/images
+mkdir plonetheme.$SHORTNAME/plonetheme/$SHORTNAME/templates
+mkdir plonetheme.$SHORTNAME/plonetheme/$SHORTNAME/javascript
