@@ -6,49 +6,44 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="plonetheme.yourthemenamegoeshere">
 
-  <five:registerPackage package="." initialize=".initialize" />
+    <five:registerPackage package="." initialize=".initialize" />
 
-  <!-- Profiles -->
-  <genericsetup:registerProfile
-      name="default"
-      title="Your Theme Name Goes Here"
-      directory="profiles/default"
-      description="Installs the 'Your Theme Name Goes Here' Plone theme."
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
+    <!-- Profiles -->
+    <genericsetup:registerProfile
+        name="default"
+        title="Your Theme Name Goes Here"
+        directory="profiles/default"
+        description="Installs the 'Your Theme Name Goes Here' Plone theme."
+        provides="Products.GenericSetup.interfaces.EXTENSION" />
 
-  <!-- Register the browser layer -->
-  <interface
-      interface=".interfaces.IThemeSpecific"
-      type="zope.publisher.interfaces.browser.IBrowserSkinType"
-      name="Your Theme Name Goes Here"
-      />
-  
-  <!-- Zope 3 browser resources -->
-  <browser:resourceDirectory
-      name="plonetheme.yourthemenamegoeshere.images"
-      directory="images"
-      layer=".interfaces.IThemeSpecific"
-      />
+    <!-- Register the browser layer -->
+    <interface
+        interface=".interfaces.IThemeSpecific"
+        type="zope.publisher.interfaces.browser.IBrowserSkinType"
+        name="Your Theme Name Goes Here" />
 
-  <browser:resourceDirectory
-      name="plonetheme.yourthemenamegoeshere.javascript"
-      directory="javascript"
-      layer=".interfaces.IThemeSpecific"
-      />
+    <!-- Zope 3 browser resources -->
+    <browser:resourceDirectory
+        name="plonetheme.yourthemenamegoeshere.images"
+        directory="images"
+        layer=".interfaces.IThemeSpecific" />
 
-  <browser:resourceDirectory
-      name="plonetheme.yourthemenamegoeshere.stylesheets"
-      directory="stylesheets"
-      layer=".interfaces.IThemeSpecific"
-      />
+    <browser:resourceDirectory
+        name="plonetheme.yourthemenamegoeshere.javascript"
+        directory="javascript"
+        layer=".interfaces.IThemeSpecific" />
 
-  <!-- Use jbot for template overrides -->
-  <include package="z3c.jbot" file="meta.zcml" />
+    <browser:resourceDirectory
+        name="plonetheme.yourthemenamegoeshere.stylesheets"
+        directory="stylesheets"
+        layer=".interfaces.IThemeSpecific" />
 
-  <browser:templateOverrides
-      directory="templates"
-      layer=".interfaces.IThemeSpecific" />
+    <!-- Use jbot for template overrides -->
+    <include package="z3c.jbot" file="meta.zcml" />
+
+    <browser:templateOverrides
+        directory="templates"
+        layer=".interfaces.IThemeSpecific" />
 
 </configure>
 

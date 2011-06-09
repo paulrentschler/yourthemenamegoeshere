@@ -3,6 +3,7 @@ from Products.CMFCore.utils import getToolByName
 THEMENAME='Your Theme Name Goes Here'
 
 def uninstall(portal):
+    """Uninstall by cleaning up portal_skins"""
     skins_tool = getToolByName(portal, 'portal_skins')
 
     # Try to clean up
