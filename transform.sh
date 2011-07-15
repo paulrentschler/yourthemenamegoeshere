@@ -9,14 +9,14 @@ fi
 SHORTNAME=$1
 FULLNAME=$2
 
+# rename the file and folder objects
+cp -rf plonetheme.yourthemenamegoeshere plonetheme.$SHORTNAME
+mv plonetheme.$SHORTNAME/plonetheme/yourthemenamegoeshere/stylesheets/yourthemenamegoeshere.css plonetheme.$SHORTNAME/plonetheme/yourthemenamegoeshere/stylesheets/$SHORTNAME.css
+mv plonetheme.$SHORTNAME/plonetheme/yourthemenamegoeshere plonetheme.$SHORTNAME/plonetheme/$SHORTNAME 
+
 # insert the theme name where needed
 SEDEXPRESSION='s/yourthemenamegoeshere/'$SHORTNAME'/g;s/Your Theme Name Goes Here/'$FULLNAME'/g'
-find -X plonetheme.yourthemenamegoeshere -type f | xargs -I {} sed -i '' -e "$SEDEXPRESSION" {} 
-
-# rename the file and folder objects
-mv plonetheme.yourthemenamegoeshere/plonetheme/yourthemenamegoeshere/stylesheets/yourthemenamegoeshere.css plonetheme.yourthemenamegoeshere/plonetheme/yourthemenamegoeshere/stylesheets/$SHORTNAME.css
-mv plonetheme.yourthemenamegoeshere/plonetheme/yourthemenamegoeshere plonetheme.yourthemenamegoeshere/plonetheme/$SHORTNAME 
-mv plonetheme.yourthemenamegoeshere plonetheme.$SHORTNAME
+find -X plonetheme.$SHORTNAME -type f | xargs -I {} sed -i '' -e "$SEDEXPRESSION" {} 
 
 # add empty folders
 mkdir plonetheme.$SHORTNAME/plonetheme/$SHORTNAME/images
